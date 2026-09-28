@@ -3,8 +3,10 @@
 \usepackage{amssymb}
 \usepackage{ctex}
 \usepackage{enumerate}
+\usepackage{float}
 \usepackage[{top=2.54cm, bottom=2.54cm, left=3.18cm, right=3.18cm}]{geometry}
 \usepackage{graphicx}
+\usepackage{caption}
 \usepackage[breaklinks, colorlinks=false, hidelinks]{hyperref}
 \usepackage{mathptmx}
 \usepackage{xcolor}
@@ -28,8 +30,17 @@
         afterskip=0ex,
     },
 }
+\newlength{\stepbodyindent}
+\AtBeginDocument{\settowidth{\stepbodyindent}{{\songti\zihao{-4}\bfseries 1.\hspace{0.5em}}}}
+\newcommand{\stepbody}[1]{%
+    \par
+    {\setlength{\leftskip}{\stepbodyindent}\setlength{\parindent}{0pt}#1\par}%
+}
 \pagestyle{plain}
-\renewcommand{\figurename}{\small{图}}
+\DeclareCaptionLabelFormat{figuretitle}{图#2}
+\captionsetup[figure]{labelformat=figuretitle,labelsep=space,font=small}
+\DeclareCaptionLabelFormat{tabletitle}{表#2}
+\captionsetup[table]{labelformat=tabletitle,labelsep=space,font=small}
 \setmainfont{Times New Roman}
 \setCJKmainfont[AutoFakeBold={2}]{SimSun}
 \setCJKfamilyfont{zh}{SimSun}
@@ -53,17 +64,19 @@
 \thispagestyle{empty}
 \begin{center}{
     \fontsize{26pt}{26pt}\selectfont
-    \vspace*{2.75\baselineskip}
+    \vspace*{1.75\baselineskip}
     \includegraphics[width=0.6\textwidth]{pics/tongji-university-logo-1024px.png}\\
     [\baselineskip]
     \heiti{轨道交通综合实验报告（一）}\\
+    \vspace*{1\baselineskip}
     \fontsize{18pt}{24pt}\selectfont
-    \vspace*{1.5\baselineskip}
     \songti{\begin{tabular}{l}
-            {\heiti{}实验日期：}【待填写实际日期】    \\
-            {\heiti{}实验名称：}振动测试技术实验     \\
-            {\heiti{}实验人员：}肖哲夫~~2352670 \\
-            {\heiti{}实验地点：}【待填写实际地点】
+            {\heiti{}实验日期：}2026年9月24日       \\
+            {\heiti{}实验名称：}振动测试技术实验         \\
+            {\heiti{}实验人员：}肖哲夫~~2352670     \\
+            \qquad\qquad\quad{}吴宝贤~~2351158 \\
+            \qquad\qquad\quad{}董智诚~~2351176 \\
+            {\heiti{}实验地点：}致臻楼217室
         \end{tabular}
     }
     }
@@ -78,116 +91,277 @@
 
 \section{\heiti{实验设备}}
 \par{}
-等强度梁、加速度传感器、电荷放大器、计算机、数据采集卡和不同质量的砝码。
-\par{}
-数据采集程序准备阶段使用信号发生器、USB-6008数据采集卡及安装了LabVIEW和相应驱动程序的计算机。%各设备的型号与实际参数见实验报告部分。
+等强度梁、YD615-2型加速度传感器、TL-1型信号调理器、数个1~kg砝码、USB6008型数据采集卡及安装有LabVIEW~8.6的计算机。
 
 \section{\heiti{实验步骤}}
 \subsection{\heiti{加速度传感器介绍}}
-\par{}
-由指导教师介绍加速度传感器的技术指标，包括量程、测量方向和响应频率；由指导教师介绍加速度传感器的标定系数和标定方法。
+\stepbody{(1)~由指导教师介绍加速度传感器的技术指标，包括量程、测量方向和响应频率；}
+\stepbody{(2)~由指导教师介绍加速度传感器的标定系数和标定方法。}
 \subsection{\heiti{在等强度梁上粘贴加速度传感器}}
-\par{}
-根据测量方向，使用磁铁或502胶水将加速度传感器固接在等强度上。
+\stepbody{根据测量方向，使用磁铁将加速度传感器固接在等强度梁上。}
 \subsection{\heiti{测量仪器的使用}}
-\par{}
-由指导教师介绍加速度传感器、电荷放大器的使用方法。
+\stepbody{由指导教师介绍加速度传感器、信号调理器的使用方法。}
 \subsection{\heiti{计算机测试系统的使用}}
-\par{}
-以往的数据采集与信号处理的程序；标定系数的设定。
+\stepbody{采用以往的数据采集与信号处理的程序并设定标定系数。}
 \subsection{\heiti{振动加速度的测试}}
-\par{}
-连接加速度传感器、电荷放大器和计算机测试系统；对振动测试系统进行调试、标定；对等强度梁进行激振，记录加速度振动波形，对加速度振动波形进行频谱分析；给等强度梁上增加砝码，重新测量振动频率，记录波形；不同砝码重量的重复实验三次，记录波形。
+\stepbody{(1)~连接加速度传感器、信号调理器和计算机测试系统；}
+\stepbody{(2)~对振动测试系统进行调试、标定；}
+\stepbody{(3)~对等强度梁进行激振，记录加速度振动波形，对加速度振动波形进行频谱分析；}
+\stepbody{(4)~给等强度梁上增加砝码，重新测量振动频率，记录波形；}
+\stepbody{(5)~不同砝码的质量重复实验三次，记录波形。}
 
-
+\begin{figure}[htbp]
+    \centering
+    \vspace{-0.1cm}
+    \includegraphics[width=0.55\textwidth]{pics/01.jpg}
+    \vspace{-0.1cm}
+    \caption{振动测试系统组装实物图}
+    \vspace{-0.5cm}
+\end{figure}
 
 \section{实验报告}
 \subsection{\heiti{加速度传感器的使用方法}}
 \par{}
-【待根据实际设备填写】%本实验使用加速度传感器测量等强度梁的振动加速度。传感器应沿预定测量方向固定在梁上，并通过电荷放大器接入数据采集系统。传感器型号、量程、测量方向、响应频率、安装位置及固定方式分别为：\textcolor{gray}{【待根据实际设备填写】}。
-\subsection{\heiti{测试系统的标定系数}}
+加速度传感器主要分为圆柱形磁吸探头与数据线两部分，磁吸探头固定在铁质物品上，主要探测圆柱轴向加速度，另一端存在一个M5螺柱，可与数据线上的M5螺纹旋紧固定；固定好后将磁吸探头吸附在等强度梁上，为了获得最佳测量效果，应吸附在振幅最大的梁末端处。
 \par{}
-【待填写】
-%记录传感器标定系数、电荷放大器设置及采集程序中使用的换算系数。若整个测试系统以$K_a$（单位为$g/\mathrm{V}$）表示电压至加速度的换算，则处理后的加速度可写为
-%\begin{equation}
-%    a(t)=K_a\bigl[u(t)-u_0\bigr],
-%\end{equation}
-%其中$u(t)$为采集电压，$u_0$为零位电压。实际使用的标定系数、单位及设置位置为：\textcolor{gray}{【待填写】}。
+接着将数据线另一端的BNC接口接入信号调理器的输入端，再将其同一频道输出端接入数据采集卡。将数据采集卡端口2、3与信号调理器连接，2号端口连接红线，3号端口连接黑线，再通过USB线接入电脑。
+\par{}
+最终连接结果如图1所示。
+\par{}
+\noindent
+\begin{minipage}[t]{0.58\textwidth}
+    \vspace{-0.3cm}
+    \subsection{\heiti{测试系统的标定系数}}
+    \par{}
+    \setlength{\parindent}{2em}
+    测试系统的相关参数如图2，其中加速度传感器的灵敏度为506.2~mV/$g$，根据
+    \begin{equation*}
+        a(t) = K_a \Delta u,
+    \end{equation*}
+    得，$K_a \approx 1.9755~g/\mathrm{V}$，即后续在程序中对于采集到的电压值，应乘上系数$K_a$才是加速度值。
+\end{minipage}\hfill
+\begin{minipage}[t]{0.4\textwidth}
+    \vspace{-0.3cm}
+    \centering
+    \includegraphics[width=0.5\linewidth]{pics/02.jpg}
+    \vspace{-0.1cm}
+    \captionof{figure}{加速度传感器技术参数}
+\end{minipage}
+\par{}
 \subsection{\heiti{实验原始数据与加速度振动波形}}
 \par{}
-【待填写】
-%记录各工况的砝码质量、采样设置和原始波形文件。每种砝码质量下的三次重复试验应分别对应一份波形及其文件名，不得用处理后的结果代替原始记录。
+如图3，实验中，首先将波形读取程序的前面板中的各项参数设置好：频道选择实际采用的频道（本次实验是Dev2/ai0），采样率为1000Hz，窗口内读取的采样数设为1000，窗函数选择汉宁窗，通道灵敏度填写先前求得的$K_a \approx 1.9755~g/\mathrm{V}$即可。
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{pics/03.png}
+    \vspace{-0.2cm}
+    \caption{数据采集程序前面板及参数设置}
+    \vspace{-0.4cm}
+\end{figure}
 \par{}
-\begin{center}
-    \renewcommand{\arraystretch}{1.3}
-    \small
-    \begin{tabular}{|c|c|c|c|c|}
-        \hline
-        工况    & 附加砝码质量 & 第一次波形文件 & 第二次波形文件 & 第三次波形文件 \\
-        \hline
-        基准工况  & 【待填写】  & 【待填写】   & 【待填写】   & 【待填写】   \\
-        \hline
-        加砝码工况 & 【待填写】  & 【待填写】   & 【待填写】   & 【待填写】   \\
-        \hline
-    \end{tabular}
-\end{center}
+分别在托盘上加载1、2、3个1~kg砝码，每次用手拨动砝码后记录振动幅值衰减的全过程波形，分别如图4中的三个波形图所示：
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.98\textwidth]{pics/04_time_waveforms.png}
+    \vspace{-0.2cm}
+    \caption{不同砝码质量下的加速度时域波形}
+    \vspace{-0.5cm}
+\end{figure}
 \par{}
-\textcolor{gray}{【待补充：按照实际砝码质量增减表格行，并逐一插入所有激振波形；图题注明工况和试验次数。】}
+由波形图直观可见，本次实验中等强度梁的振动为阻尼振动，且为欠阻尼状态。
 \subsection{\heiti{数据处理结果与振动频率分析}}
 \par{}
-【待填写】
-%对每次采集的加速度波形进行频谱分析，记录主要频率峰值。若对同一工况进行三次重复测量，其平均频率为
-%\begin{equation}
-%    \bar f=\frac{f_1+f_2+f_3}{3}.
-%\end{equation}
-%频谱分析方法、频谱图和测量结果为：\textcolor{gray}{【待根据原始数据补充】}。
+针对3次实验，分别在实验时记录前面板显示的频率，记为$f_\mathrm{on}$；将时域加速度的前12s数据导入到MATLAB进行分析，得出振动频谱图，截取前10Hz，如图5；分别读出峰值$f_\mathrm{peak}$，并计算主峰附近的加权中心频率$f_\mathrm{center}$。
 \par{}
+其中，加权中心频率满足：
+\begin{align*}
+     & f_\mathrm{center}=\frac{\sum_{f_k \in B} f_k A_k^2}{\sum_{f_k \in B} A_k^2}, \\
+     & B=[f_\mathrm{peak} - 5,\,~f_\mathrm{peak} + 5]\,~\mathrm{Hz}.
+\end{align*}
+即仅对$f_\mathrm{peak} \pm 5~\mathrm{Hz}$内的频谱求加权平均值。
+\begin{figure}[htbp]
+    \centering
+    \vspace{-0.2cm}
+    \includegraphics[width=0.98\textwidth]{pics/05_frequency_spectra_0_10Hz.png}
+    \vspace{-0.2cm}
+    \caption{不同砝码质量下的加速度频域波形}
+    \vspace{-0.3cm}
+\end{figure}
+\par{}
+将得到的所有数据罗列至表1，其中$f_\mathrm{on}$保留两位小数，$f_\mathrm{peak}$与$f_\mathrm{center}$均保留四位小数。计算发现每组数据的3种频率值之间最大相对偏差不超过3\%，因此在误差允许范围内可以认为三种统计频率的方式等价。
+\par{}
+同时，按照$f_\mathrm{center}$的对照关系，以单个砝码质量$m=1.0~\mathrm{kg}$对应的频率为基准，求得$2m$、$3m$工况的相对频率倍数，其分母保留四位小数，同样呈现在表1中。
 \begin{center}
+    \vspace{-0.5cm}
+    \captionof{table}{不同砝码质量下的振动频率测量与分析结果}
     \renewcommand{\arraystretch}{1.3}
     \small
     \begin{tabular}{|c|c|c|c|c|c|}
         \hline
-        附加砝码质量 & $f_1$ / Hz & $f_2$ / Hz & $f_3$ / Hz & $\bar f$ / Hz & 备注    \\
+        序号 & 附加砝码质量~/~kg & $f_\mathrm{on}$~/~Hz & $f_\mathrm{peak}$~/~Hz & $f_\mathrm{center}$~/~Hz & 相对倍数     \\
         \hline
-        【待填写】  & 【待填写】      & 【待填写】      & 【待填写】      & 【待填写】         & 【待填写】 \\
+        1  & 1.0         & 8.78                 & 8.9159                 & 8.9093                   & 1.0000   \\
         \hline
-        【待填写】  & 【待填写】      & 【待填写】      & 【待填写】      & 【待填写】         & 【待填写】 \\
+        2  & 2.0         & 6.45                 & 6.4995                 & 6.4688                   & 1/1.3773 \\
+        \hline
+        3  & 3.0         & 5.45                 & 5.3329                 & 5.3623                   & 1/1.6615 \\
         \hline
     \end{tabular}
 \end{center}
 \subsection{\heiti{实验结论}}
 \par{}
-\textcolor{gray}{【待根据实测波形、频率与重复测量结果填写结论，说明不同附加质量下的频率变化及可能的误差来源。】}
+三组加速度时域波形均表现为振幅随时间衰减的周期振荡，表明系统在本次实验条件下处于欠阻尼状态。频谱的主要成分集中在各自的主峰$f_\mathrm{peak}$附近；1.0、2.0、3.0~kg砝码对应的峰值频率分别为8.9159、6.4995、5.3329~Hz。
+\par{}
+随着附加砝码质量增大，振动频率降低。以$m=1.0~\mathrm{kg}$工况的$f_\mathrm{center}$为基准，三个工况的频率比约为$1.0000:1/1.3773:1/1.6615$，符合等效质量增加时振动频率下降的定性规律。后续将对三组数据的频率差异及等强度梁刚度等进行定量探究。
+
 \subsection{\heiti{思考题}}
 \par\noindent{}
-\heiti{(1)~砝码质量增加1倍时，等强度梁的振动频率增加多少倍？分析测量结果与理论结论出现差异的原因。}
+\textbf{(1)}{\heiti~砝码质量增加1倍时，等强度梁的振动频率增加多少倍？分析测量结果与理论结论出现差异的原因。}
 \par{}
 {\setlength{\parindent}{0pt}\heiti{}答：}
 \par{}
-%单自由度近似下，振动频率满足$f=(2\pi)^{-1}\sqrt{k/m_{\mathrm{eq}}}$。若仅砝码质量由$m$变为$2m$，而梁和传感器等形成的其余等效质量为$m_0$，则频率比为
-%\begin{equation}
-%    \frac{f_2}{f_1}=\sqrt{\frac{m_0+m}{m_0+2m}}.
-%\end{equation}
-%当其余等效质量相对砝码质量可忽略时，该比值趋近于$1/\sqrt{2}$，即频率降低而非增加。实测频率比和偏差原因需结合实验结果分析：\textcolor{gray}{【待填写】}。
+理论上，单自由度近似下，振动频率满足
+\begin{equation*}
+    f = \frac{1}{2 \pi} \sqrt{\frac{k}{m_{\mathrm{eq}}}}.
+\end{equation*}
+设单个砝码质量$m = 1.0~\mathrm{kg}$，若仅考虑砝码质量，则$m$工况的振动频率分别是$2m$、$3m$工况的$\sqrt{2} \approx 1.4142$与$\sqrt{3} \approx 1.7321$倍。
+\par{}
+然而实验所得的两个频率倍数均低于仅考虑砝码质量时的理论值。在刚度近似不变的前提下，托盘、传感器及等强度梁参与振动的固定等效质量可以解释这一偏差。
+\par{}
+{\setlength{\parindent}{0pt}{\heiti{}解法}\textbf{1}{\heiti{}：}}
+\par{}
+令系统除砝码外的固定等效质量为$\Delta m$，则$m_{\mathrm{eq}} = i m + \Delta m$，对振动频率公式做修正：
+\begin{equation*}
+    f = \frac{1}{2 \pi} \sqrt{\frac{k}{i m + \Delta m}}.
+\end{equation*}
+其中$i$为砝码个数。此时有
+\begin{equation*}
+    \frac{f_m}{f_{2m}}=\sqrt{\frac{2m + \Delta m}{m + \Delta m}} \approx 1.3773 < \sqrt{2}, \quad \frac{f_m}{f_{3m}}=\sqrt{\frac{3m + \Delta m}{m + \Delta m}} \approx 1.6615 < \sqrt{3}.
+\end{equation*}
+直接用表1的$f_\mathrm{center}$数值计算频率比，代入$m = 1.0~\mathrm{kg}$，可得两条方程的解分别约为$\Delta m = 0.1150~\mathrm{kg}$与$\Delta m = 0.1361~\mathrm{kg}$。
+\par{}
+可能由于频率测量误差与刚度的轻微变化，导致不同方程计算出的同一个量不完全一致，加之方程对参数较为敏感，因此方法只能近似描述本次测量结果。
+\par{}
+{\setlength{\parindent}{0pt}{\heiti{}解法}\textbf{2}{\heiti{}：}}
+\par{}
+使用三组数据进行非线性最小二乘拟合。设三组砝码质量为$m_i=i m$（$i=1,2,3$，$m=1.0~\mathrm{kg}$），以表1的$f_{\mathrm{center},i}$近似阻尼振动频率，并按问题(2)中的衰减指数$\sigma_i = \zeta_i\omega_{n,i}$进行修正，得到无阻尼固有频率$f_{n,i}$分别约为$8.9096$、$6.4690$、$5.3624~\mathrm{Hz}$。令模型预测频率为
+\begin{equation*}
+    \widehat f_{n,i}(k,\Delta m)=\frac{1}{2\pi}\sqrt{\frac{k}{m_i+\Delta m}},
+\end{equation*}
+则联合估计$k$与$\Delta m$时，直接使三组频率残差的平方和最小：
+\begin{equation*}
+    (\widehat k,\widehat{\Delta m})
+    =\underset{k>0,\,\Delta m>0}{\operatorname{arg\,min}}
+    \sum_{i=1}^{3}\left[f_{n,i}-\widehat f_{n,i}(k,\Delta m)\right]^2.
+\end{equation*}
+计算得到$\Delta m\approx0.1280~\mathrm{kg}$，同时得到$k\approx3.53\times10^3~\mathrm{N/m}$。
 \par\noindent{}
-\heiti{(2)~已知砝码质量时，如何通过系统振动频率推算等强度梁的刚度？}
+\textbf{(2)}{\heiti~已知砝码质量时，如何通过系统振动频率推算等强度梁的刚度？}
 \par{}
 {\setlength{\parindent}{0pt}\heiti{}答：}
 \par{}
-%若已知振动系统的等效质量$m_{\mathrm{eq}}$，由单自由度模型可得等效刚度
-%\begin{equation}
-%    k=(2\pi f)^2m_{\mathrm{eq}}.
-%\end{equation}
-%若梁和传感器的等效质量未知，可利用两种已知附加质量$m_1$、$m_2$及其对应频率$f_1$、$f_2$消去固定等效质量：
-%\begin{equation}
-%    k=\frac{4\pi^2(m_2-m_1)}{1/f_2^2-1/f_1^2}.
-%\end{equation}
-%根据实际测量数据计算的刚度为：\textcolor{gray}{【待填写】}。
+本实验已知三组砝码质量$m_i=i m$（$i=1,2,3$，$m=1.0~\mathrm{kg}$），可结合频率与波形衰减进行单自由度等效估算。设$m_{\mathrm{eq},i}=m_i+\Delta m$，以表1的$f_{\mathrm{center},i}$近似阻尼振动频率$f_{d,i}$。
+\par{}
+扣除静态偏置后，欠阻尼自由振动的加速度时域响应可表示为
+\begin{align*}
+    \widetilde a_i(t) & = C_i e^{-\sigma_i t}\cos(\omega_{d,i}t+\varphi_i),      \\
+    \omega_{d,i}      & =\sqrt{\omega_{n,i}^{2}-\sigma_i^{2}}=2\pi f_{d,i},\quad
+    \sigma_i = \zeta_i\omega_{n,i}.
+\end{align*}
+其中$C_i$为幅值系数，$\varphi_i$为初相位，$\sigma_i$为衰减指数，$\omega_{n,i}$与$\omega_{d,i}$分别为无阻尼固有角频率和阻尼振动角频率。正向加速度峰值的包络也按同一指数率衰减，可写为
+\begin{equation*}
+    A_{i,\mathrm{env}}(t)=A_{0,i}e^{-\sigma_i t}.
+\end{equation*}
+因此，取峰值的自然对数后，即可用直线斜率求$\sigma_i$。从图4的连续衰减段提取同向加速度峰值$A_{i,j}$：1.0~kg工况取约0.1--5.0~s，2.0、3.0~kg工况取约0.1--8.0~s，并剔除不高于末段噪声标准差5倍的峰值，最终结果如图6。
+\begin{figure}[htbp]
+    \centering
+    \vspace{-0.2cm}
+    \includegraphics[width=0.98\textwidth]{pics/06_decay_peaks.png}
+    \vspace{-0.2cm}
+    \caption{不同砝码质量下的加速度波形、选取峰值及衰减包络拟合}
+\end{figure}
+\par{}
+对各工况的峰值对数作最小二乘线性拟合，有
+\begin{align*}
+     & \ln\left(\frac{A_{i,j}}{g}\right)  \approx \alpha_i-\sigma_i t_{i,j}, \\
+     & \alpha_i = \ln\left(\frac{A_{0,i}}{g}\right),\quad
+    f_{n,i} \approx \sqrt{f_{\mathrm{center},i}^{2}+\left(\frac{\sigma_i}{2\pi}\right)^2}.
+\end{align*}
+这里$g$为重力加速度，除以$g$可使对数的自变量变为无量纲量。三组峰值对数及其拟合直线如图7所示。
+\begin{figure}[htbp]
+    \centering
+    \vspace{-0.2cm}
+    \includegraphics[width=0.98\textwidth]{pics/07_log_peak_linear_fit.png}
+    \vspace{-0.2cm}
+    \caption{不同砝码质量下的加速度峰值对数线性拟合}
+    \vspace{-0.3cm}
+\end{figure}
+\par{}
+拟合得到三个工况的衰减指数$\sigma_i$分别约为$0.4621$、$0.2918$、$0.2258~\mathrm{s}^{-1}$。使用衰减指数$\sigma_i$将近似阻尼频率$f_\mathrm{center}$修正为无阻尼固有频率后，按上一题的解法2拟合求得$\Delta m\approx0.1280~\mathrm{kg}$，单个工况的等效刚度满足
+\begin{equation*}
+    k_i=(2\pi f_{n,i})^2(m_i+\Delta m).
+\end{equation*}
+由于三组实测频率不严格满足同一组模型参数，以联合拟合结果作为本测点和该振动模态下的等效刚度，得$k\approx3.53\times10^3~\mathrm{N/m}$。
+\par{}
+由上述衰减指数还可求出阻尼比$\zeta_i$及等效黏性阻尼系数$c_i$：
+\begin{equation*}
+    \zeta_i=\frac{\sigma_i}{2\pi f_{n,i}},\quad
+    c_i=2(m_i+\Delta m)\sigma_i.
+\end{equation*}
+按1.0、2.0、3.0~kg工况顺序，计算结果分别为
+\begin{align*}
+    \begin{bmatrix}\zeta_1\\\zeta_2\\\zeta_3\end{bmatrix}
+    \approx
+    \begin{bmatrix}0.00826\\0.00718\\0.00670\end{bmatrix},
+    \quad
+    \begin{bmatrix}c_1\\c_2\\c_3\end{bmatrix}
+    \approx
+    \begin{bmatrix}1.04\\1.24\\1.41\end{bmatrix}
+    \,\mathrm{N\cdot s/m}.
+\end{align*}
+三组阻尼系数的平均值约为$\overline{c} = 1.23~\mathrm{N\cdot s/m}$。
+\par{}
+数据差异可能是由于测量误差、不同工况下的能量损耗规律不同于纯黏性阻尼规律、峰值提取与包络拟合误差等，说明常系数单自由度模型只能近似描述本次实验的衰减过程，真实的系统参数需要结合有限元模态仿真并进行多次重复实验后才能确定。
 \subsection{\heiti{程序源代码}}
 \par{}
-\textcolor{gray}{【待附实际使用的LabVIEW VI程序及程序框图，注明采集、标定、波形文件记录和频谱分析部分。】}
-\subsection{\heiti{附上含实验人员和日期的现场照片。}}
+所用LabVIEW程序的前面板及程序框图见图8至图13，包括波形文件转换、数据采集和波形文件读取程序；后处理采用的MATLAB脚本见文末。
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.98\textwidth,keepaspectratio]{pics/08.png}
+    \caption{数据采集程序框图}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.98\textwidth,keepaspectratio]{pics/09.png}
+    \caption{数据采集程序前面板}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.98\textwidth,keepaspectratio]{pics/10.png}
+    \caption{波形文件读取程序框图}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.98\textwidth,keepaspectratio]{pics/11.png}
+    \caption{波形文件读取程序前面板}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.98\textwidth,keepaspectratio]{pics/12.png}
+    \caption{波形文件转换程序框图}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth,keepaspectratio]{pics/13.png}
+    \caption{波形文件转换程序前面板}
+\end{figure}
 \par{}
-\textcolor{gray}{【待插入现场照片；图题注明实验人员、拍摄日期和实验环节。】}
+\newgeometry{left=0pt,right=0pt,top=0pt,bottom=0pt}
+\thispagestyle{empty}
+\begin{figure}[htbp]
+    \centering
+    \special{papersize=\the\paperwidth, 1459.19mm}
+    \includegraphics[width=\paperwidth]{pics/14.png}
+\end{figure}
 
 \end{document}
